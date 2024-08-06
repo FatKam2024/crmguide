@@ -1,0 +1,218 @@
+{
+  "CRM Basics": {
+    "description": {
+      "english": "Fundamental concepts and principles of Customer Relationship Management (CRM)",
+      "chinese": "客戶關係管理（CRM）的基本概念和原則"
+    },
+    "topics": {
+      "What is CRM?": {
+        "english": {
+          "definition": "CRM is a strategy for managing an organization's relationships and interactions with customers and potential customers.",
+          "keyPoints": [
+            "Customer-centric approach",
+            "Data-driven decision making",
+            "Improved customer satisfaction",
+            "Increased sales and retention"
+          ],
+          "subtopics": [
+            "CRM Philosophy",
+            "CRM Technology",
+            "CRM Processes"
+          ],
+          "example": "A company using CRM software to track customer interactions and personalize communications."
+        },
+        "chinese": {
+          "definition": "CRM是一種管理組織與客戶和潛在客戶關係和互動的策略。",
+          "keyPoints": [
+            "以客戶為中心的方法",
+            "數據驅動的決策",
+            "提高客戶滿意度",
+            "增加銷售和留存"
+          ],
+          "subtopics": [
+            "CRM理念",
+            "CRM技術",
+            "CRM流程"
+          ],
+          "example": "公司使用CRM軟件追踪客戶互動並個性化溝通。"
+        }
+      },
+      "CRM Benefits": {
+        "english": {
+          "definition": "The advantages organizations gain from implementing and utilizing CRM systems and strategies.",
+          "keyPoints": [
+            "Enhanced customer service",
+            "Increased efficiency in sales and marketing",
+            "Better customer insights",
+            "Improved customer retention"
+          ],
+          "subtopics": [
+            "Financial Benefits",
+            "Operational Benefits",
+            "Analytical Benefits"
+          ],
+          "example": "A business seeing a 20% increase in customer satisfaction scores after implementing a CRM system."
+        },
+        "chinese": {
+          "definition": "組織實施和使用CRM系統和策略所獲得的優勢。",
+          "keyPoints": [
+            "提升客戶服務",
+            "提高銷售和營銷效率",
+            "更好的客戶洞察",
+            "改善客戶保留"
+          ],
+          "subtopics": [
+            "財務效益",
+            "運營效益",
+            "分析效益"
+          ],
+          "example": "企業在實施CRM系統後客戶滿意度評分增加20%。"
+        }
+      }
+    }
+  },
+  "CRM Implementation": {
+    "description": {
+      "english": "The process of selecting, deploying, and adopting a CRM system within an organization",
+      "chinese": "在組織內選擇、部署和採用CRM系統的過程"
+    },
+    "topics": {
+      "Planning and Strategy": {
+        "english": {
+          "definition": "The initial phase of CRM implementation involving goal setting, resource allocation, and roadmap creation.",
+          "keyPoints": [
+            "Defining CRM objectives",
+            "Assessing current processes",
+            "Selecting the right CRM solution",
+            "Creating an implementation timeline"
+          ],
+          "subtopics": [
+            "Stakeholder Analysis",
+            "Budget Planning",
+            "Risk Assessment"
+          ],
+          "example": "A company conducting a thorough needs analysis before choosing a CRM vendor."
+        },
+        "chinese": {
+          "definition": "CRM實施的初始階段，包括目標設定、資源分配和路線圖創建。",
+          "keyPoints": [
+            "定義CRM目標",
+            "評估當前流程",
+            "選擇合適的CRM解決方案",
+            "制定實施時間表"
+          ],
+          "subtopics": [
+            "利益相關者分析",
+            "預算規劃",
+            "風險評估"
+          ],
+          "example": "公司在選擇CRM供應商之前進行全面的需求分析。"
+        }
+      },
+      "Data Migration": {
+        "english": {
+          "definition": "The process of transferring existing customer data into the new CRM system.",
+          "keyPoints": [
+            "Data cleaning and preparation",
+            "Mapping data fields",
+            "Testing data integrity",
+            "Handling legacy systems"
+          ],
+          "subtopics": [
+            "Data Validation",
+            "Data Enrichment",
+            "Data Security"
+          ],
+          "example": "Migrating customer contact information from spreadsheets to a cloud-based CRM platform."
+        },
+        "chinese": {
+          "definition": "將現有客戶數據轉移到新CRM系統的過程。",
+          "keyPoints": [
+            "數據清理和準備",
+            "映射數據字段",
+            "測試數據完整性",
+            "處理遺留系統"
+          ],
+          "subtopics": [
+            "數據驗證",
+            "數據豐富",
+            "數據安全"
+          ],
+          "example": "將客戶聯繫信息從電子表格遷移到基於雲的CRM平台。"
+        }
+      }
+    }
+  },
+  "CRM Best Practices": {
+    "description": {
+      "english": "Proven strategies and techniques for maximizing the effectiveness of CRM systems and processes",
+      "chinese": "經證實的策略和技術，用於最大化CRM系統和流程的有效性"
+    },
+    "topics": {
+      "Customer Segmentation": {
+        "english": {
+          "definition": "The practice of dividing a customer base into groups of individuals that are similar in specific ways relevant to marketing.",
+          "keyPoints": [
+            "Identifying key customer attributes",
+            "Creating targeted marketing campaigns",
+            "Personalizing customer experiences",
+            "Optimizing resource allocation"
+          ],
+          "subtopics": [
+            "Demographic Segmentation",
+            "Behavioral Segmentation",
+            "Value-based Segmentation"
+          ],
+          "example": "An e-commerce company segmenting customers based on purchase history to send personalized product recommendations."
+        },
+        "chinese": {
+          "definition": "將客戶群分為在特定方面相似且與營銷相關的個人群體的做法。",
+          "keyPoints": [
+            "識別關鍵客戶屬性",
+            "創建針對性的營銷活動",
+            "個性化客戶體驗",
+            "優化資源分配"
+          ],
+          "subtopics": [
+            "人口統計細分",
+            "行為細分",
+            "基於價值的細分"
+          ],
+          "example": "電子商務公司根據購買歷史對客戶進行細分，以發送個性化產品推薦。"
+        }
+      },
+      "Customer Journey Mapping": {
+        "english": {
+          "definition": "The process of creating a visual representation of every experience your customers have with you.",
+          "keyPoints": [
+            "Identifying customer touchpoints",
+            "Understanding customer needs and pain points",
+            "Improving customer experience",
+            "Aligning internal processes with customer expectations"
+          ],
+          "subtopics": [
+            "Touchpoint Analysis",
+            "Emotional Mapping",
+            "Channel Integration"
+          ],
+          "example": "A telecom company mapping out the entire process a customer goes through from researching plans to becoming a loyal customer."
+        },
+        "chinese": {
+          "definition": "創建客戶與您的每次體驗的視覺表示的過程。",
+          "keyPoints": [
+            "識別客戶接觸點",
+            "了解客戶需求和痛點",
+            "改善客戶體驗",
+            "將內部流程與客戶期望保持一致"
+          ],
+          "subtopics": [
+            "接觸點分析",
+            "情感映射",
+            "渠道整合"
+          ],
+          "example": "電信公司映射客戶從研究計劃到成為忠誠客戶的整個過程。"
+        }
+      }
+    }
+  }
+}
