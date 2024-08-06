@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     let crmTrainingGuide;
     let sidebarExpanded = false;
+    let completedTopics = 0;
+    let totalTopics = 0;
 
     function showInitialContent() {
         const contentArea = document.getElementById('contentArea');
@@ -31,20 +33,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 topicLi.textContent = topic;
                 topicLi.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    showTopicDetails(category, topic);
+					showTopicDetails(category, topic);
                 });
                 ul.appendChild(topicLi);
+                totalTopics++;
             });
             li.appendChild(ul);
             topicList.appendChild(li);
         });
         showInitialContent();
+        updateProgress();
     }
 
     function showCategoryDetails(category) {
         const contentArea = document.getElementById('contentArea');
         const categoryInfo = crmTrainingGuide[category];
         contentArea.innerHTML = `
+            <div class="breadcrumb">
+                <a href="#">Home</a> &gt; <span id="currentTopic">${category}</span>
+            </div>
             <h2>${category}</h2>
             <p>${categoryInfo.description.english}</p>
             <p class="chinese">${categoryInfo.description.chinese}</p>
@@ -59,6 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const contentArea = document.getElementById('contentArea');
         const topicInfo = crmTrainingGuide[category].topics[topic];
         contentArea.innerHTML = `
+            <div class="breadcrumb">
+                <a href="#">Home</a> &gt; ${category} &gt; <span id="currentTopic">${topic}</span>
+            </div>
             <h2>${topic}</h2>
             <h3>English</h3>
             <p><strong>Definition:</strong> ${topicInfo.english.definition}</p>
@@ -84,6 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
             </ul>
             <p><strong>例子：</strong> ${topicInfo.chinese.example}</p>
         `;
+        completedTopics++;
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const progress = (completedTopics / totalTopics) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
     }
 
     fetch('crm-training-guide-data.json')
@@ -119,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.add('dark-mode');
             localStorage.setItem('theme', 'dark');
         }
-		updateThemeButtonText();
+        updateThemeButtonText();
     });
 
     function updateThemeButtonText() {
@@ -152,5 +169,53 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             updateThemeButtonText();
         }
+    });
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const topics = document.querySelectorAll('.topic');
+        topics.forEach(topic => {
+            const topicText = topic.textContent.toLowerCase();
+            topic.style.display = topicText.includes(searchTerm) ? '' : 'none';
+        });
+    });
+
+    // Quiz functionality
+    document.querySelector('.quiz-submit').addEventListener('click', function() {
+        const selectedAnswer = document.querySelector('input[name="crm-quiz"]:checked');
+        const feedbackElement = document.querySelector('.quiz-feedback');
+        
+        if (selectedAnswer) {
+            if (selectedAnswer.value === "1") {
+                feedbackElement.textContent = "Correct! CRM stands for Customer Relationship Management.";
+                feedbackElement.style.color = "green";
+            } else {
+                feedbackElement.textContent = "Incorrect. The correct answer is Customer Relationship Management.";
+                feedbackElement.style.color = "red";
+            }
+        } else {
+            feedbackElement.textContent = "Please select an answer.";
+            feedbackElement.style.color = "black";
+        }
+    });
+
+    // Interactive diagram functionality
+    const diagramElements = document.querySelectorAll('.diagram-element');
+    const diagramInfo = document.getElementById('diagramInfo');
+    const diagramData = {
+        'core-crm': 'The central system that manages customer interactions and data throughout the customer lifecycle.',
+        'sales': 'Manages leads, opportunities, and the sales pipeline.',
+        'marketing': 'Handles campaigns, lead generation, and customer segmentation.',
+        'service': 'Manages customer support tickets, service level agreements, and customer satisfaction.',
+        'analytics': 'Provides insights and reports on customer data and business performance.'
+    };
+
+    diagramElements.forEach(element => {
+        element.addEventListener('click', function() {
+            const info = diagramData[this.dataset.info];
+            diagramInfo.textContent = info;
+            diagramInfo.style.display = 'block';
+        });
     });
 });
