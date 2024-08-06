@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const topicLi = document.createElement('li');
                 topicLi.className = 'topic';
                 topicLi.textContent = topic;
+                topicLi.dataset.category = category;
+                topicLi.dataset.topic = topic;
                 topicLi.addEventListener('click', (e) => {
                     e.stopPropagation();
                     showTopicDetails(category, topic);
@@ -100,7 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const topicInfo = crmTrainingGuide[category].topics[topic];
         contentArea.innerHTML = `
             <div class="breadcrumb">
-                <a href="#">Home</a> &gt; <a href="#" onclick="showCategoryDetails('${category}')">${category}</a> &gt; <span id="currentTopic">${topic}</span>
+                <a href="#" data-action="home">Home</a> &gt; 
+                <a href="#" data-action="category" data-category="${category}">${category}</a> &gt; 
+                <span id="currentTopic">${topic}</span>
             </div>
             <h2>${topic}</h2>
             <h3>English</h3>
@@ -132,8 +136,27 @@ document.addEventListener('DOMContentLoaded', function() {
             topicInfo.completed = true;
             updateProgress();
         }
+        attachBreadcrumbListeners();
+    }
+	
+    function attachBreadcrumbListeners() {
+        const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+        breadcrumbLinks.forEach(link => {
+            link.addEventListener('click', handleBreadcrumbClick);
+        });
     }
 
+    function handleBreadcrumbClick(event) {
+        event.preventDefault();
+        const action = event.target.dataset.action;
+        if (action === 'home') {
+            showInitialContent();
+        } else if (action === 'category') {
+            const category = event.target.dataset.category;
+            showCategoryDetails(category);
+        }
+    }
+	
     function updateProgress() {
         const progress = (completedTopics / totalTopics) * 100;
         document.getElementById('progressBar').style.width = `${progress}%`;
