@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 topicLi.textContent = topic;
                 topicLi.addEventListener('click', (e) => {
                     e.stopPropagation();
-					showTopicDetails(category, topic);
+                    showTopicDetails(category, topic);
                 });
                 ul.appendChild(topicLi);
                 totalTopics++;
             });
             li.appendChild(ul);
-            topicList.appendChild(li);
+			topicList.appendChild(li);
         });
         showInitialContent();
         updateProgress();
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const topicInfo = crmTrainingGuide[category].topics[topic];
         contentArea.innerHTML = `
             <div class="breadcrumb">
-                <a href="#">Home</a> &gt; ${category} &gt; <span id="currentTopic">${topic}</span>
+                <a href="#">Home</a> &gt; <a href="#" onclick="showCategoryDetails('${category}')">${category}</a> &gt; <span id="currentTopic">${topic}</span>
             </div>
             <h2>${topic}</h2>
             <h3>English</h3>
@@ -94,8 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
             </ul>
             <p><strong>例子：</strong> ${topicInfo.chinese.example}</p>
         `;
-        completedTopics++;
-        updateProgress();
+        if (!topicInfo.completed) {
+            completedTopics++;
+            topicInfo.completed = true;
+            updateProgress();
+        }
     }
 
     function updateProgress() {
@@ -127,15 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Theme toggle functionality
     const toggleTheme = document.getElementById('toggleTheme');
     toggleTheme.addEventListener('click', function() {
-        if (document.body.classList.contains('dark-mode')) {
-            document.body.classList.remove('dark-mode');
-            document.body.classList.add('light-mode');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.body.classList.remove('light-mode');
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
-        }
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
         updateThemeButtonText();
     });
 
@@ -160,13 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addListener(function(e) {
         if (!localStorage.getItem('theme')) {
-            if (e.matches) {
-                document.body.classList.remove('light-mode');
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-                document.body.classList.add('light-mode');
-            }
+            document.body.classList.toggle('dark-mode', e.matches);
             updateThemeButtonText();
         }
     });
@@ -177,7 +167,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const topics = document.querySelectorAll('.topic');
         topics.forEach(topic => {
             const topicText = topic.textContent.toLowerCase();
-            topic.style.display = topicText.includes(searchTerm) ? '' : 'none';
+            const category = topic.closest('li').querySelector('.category');
+            const isVisible = topicText.includes(searchTerm);
+            topic.style.display = isVisible ? '' : 'none';
+            if (isVisible) {
+                category.classList.add('expanded');
+            }
         });
     });
 

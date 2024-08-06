@@ -31,6 +31,10 @@ body {
     padding: 30px;
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
+    overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
 }
 
 .sidebar h2 {
@@ -46,6 +50,7 @@ body {
     padding: 40px;
     background-color: var(--content-bg);
     box-shadow: var(--box-shadow);
+    overflow-y: auto;
 }
 
 h1, h2, h3, h4 {
@@ -114,7 +119,7 @@ ul {
     display: block;
 }
 
-#toggleSidebar, #toggleTheme {
+#toggleSidebar, #toggleTheme, .quiz-submit {
     margin-bottom: 20px;
     padding: 10px 15px;
     background-color: var(--crm-primary-color);
@@ -129,7 +134,7 @@ ul {
     letter-spacing: 1px;
 }
 
-#toggleSidebar:hover, #toggleTheme:hover {
+#toggleSidebar:hover, #toggleTheme:hover, .quiz-submit:hover {
     background-color: #3498db;
     transform: translateY(-2px);
 }
@@ -271,16 +276,6 @@ body.dark-mode .topic:hover {
     margin-bottom: 10px;
 }
 
-.quiz-submit {
-    background-color: var(--crm-primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
 .quiz-feedback {
     margin-top: 10px;
     font-weight: bold;
@@ -319,6 +314,8 @@ body.dark-mode .topic:hover {
     .sidebar {
         width: 100%;
         padding: 20px;
+        height: auto;
+        position: static;
     }
 
     .content {
