@@ -4,66 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Training Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="crm-training-guide-styles.css">
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar" role="complementary" aria-label="CRM Training Navigation">
+        <div class="sidebar">
             <h2>CRM Training Guide</h2>
-            <button id="toggleSidebar" aria-expanded="false" aria-controls="topicList">Expand/Collapse All</button>
-            <button id="toggleTheme" aria-pressed="false">Dark Mode</button>
-            <div class="search-container">
-                <label for="searchInput" class="visually-hidden">Search topics</label>
-                <input type="text" id="searchInput" placeholder="Search topics..." aria-label="Search topics">
-            </div>
-            <ul id="topicList">
-                <!-- Topic list will be populated by JavaScript -->
-            </ul>
-            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <div class="progress" id="progressBar"></div>
-            </div>
-        </aside>
-        <main id="contentArea" class="content" role="main">
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="#" aria-current="page">Home</a> &gt; <span id="currentTopic">Welcome</span>
-            </nav>
+            <button id="toggleSidebar">Expand/Collapse All</button>
+            <button id="toggleTheme">Dark Mode</button>
+            <ul id="topicList"></ul>
+        </div>
+        <div id="contentArea" class="content" role="main">
             <h1>Comprehensive CRM Training Guide</h1>
             <p>Welcome to our comprehensive guide on Customer Relationship Management (CRM). Please select a category or topic from the sidebar to view its details.</p>
-            <p>Hover over <span class="tooltip">highlighted terms<span class="tooltiptext">Terms with additional information</span></span> for quick definitions.</p>
-            
-            <section class="quiz-container" aria-labelledby="quizTitle">
-                <h3 id="quizTitle">Quick Quiz</h3>
-                <div class="quiz-question" aria-labelledby="quizQuestion">
-                    <strong>What does CRM stand for?</strong>
-                </div>
-                <div class="quiz-options">
-                    <label><input type="radio" name="crm-quiz" value="1"> Customer Relationship Management</label>
-                    <label><input type="radio" name="crm-quiz" value="2"> Customer Resource Management</label>
-                    <label><input type="radio" name="crm-quiz" value="3"> Client Retention Method</label>
-                </div>
-                <button class="quiz-submit" aria-live="polite">Submit Answer</button>
-                <div class="quiz-feedback" role="alert" aria-live="assertive"></div>
-            </section>
-
-            <section class="interactive-diagram" aria-labelledby="diagramTitle">
-                <h3 id="diagramTitle">CRM Ecosystem</h3>
-                <svg width="300" height="200" viewBox="0 0 300 200" role="img" aria-labelledby="diagramDescription">
-                    <title id="diagramDescription">Diagram of CRM Ecosystem</title>
-                    <circle cx="150" cy="100" r="80" fill="#3498db" class="diagram-element" data-info="core-crm" tabindex="0"/>
-                    <text x="150" y="105" text-anchor="middle" fill="white" font-size="14">Core CRM</text>
-                    <circle cx="50" cy="50" r="30" fill="#e74c3c" class="diagram-element" data-info="sales" tabindex="0"/>
-                    <text x="50" y="55" text-anchor="middle" fill="white" font-size="12">Sales</text>
-                    <circle cx="250" cy="50" r="30" fill="#2ecc71" class="diagram-element" data-info="marketing" tabindex="0"/>
-                    <text x="250" y="55" text-anchor="middle" fill="white" font-size="12">Marketing</text>
-                    <circle cx="50" cy="150" r="30" fill="#f39c12" class="diagram-element" data-info="service" tabindex="0"/>
-                    <text x="50" y="155" text-anchor="middle" fill="white" font-size="12">Service</text>
-                    <circle cx="250" cy="150" r="30" fill="#9b59b6" class="diagram-element" data-info="analytics" tabindex="0"/>
-                    <text x="250" y="155" text-anchor="middle" fill="white" font-size="12">Analytics</text>
-                </svg>
-                <div id="diagramInfo" class="diagram-info"></div>
-            </section>
-        </main>
+        </div>
     </div>
     <script src="crm-training-guide-script.js"></script>
 </body>
