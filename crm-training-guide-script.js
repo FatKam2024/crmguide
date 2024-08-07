@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         attachBreadcrumbListeners();
     }
-    
+
     function attachBreadcrumbListeners() {
         const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
         breadcrumbLinks.forEach(link => {
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showCategoryDetails(category);
         }
     }
-    
+
     function updateProgress() {
         const progress = (completedTopics / totalTopics) * 100;
         const progressBar = document.getElementById('progressBar');
@@ -244,6 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 category.querySelector('.category').setAttribute('aria-expanded', 'false');
             }
         });
+        adjustLayout(); // Adjust layout dynamically when toggling sidebar
         toggleSidebar.setAttribute('aria-expanded', sidebarExpanded);
     });
 
@@ -293,4 +294,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Adjust layout based on window size
+    window.addEventListener('resize', adjustLayout);
+
+    function adjustLayout() {
+        const contentArea = document.querySelector('.content');
+        if (window.innerWidth <= 768) {
+            // Mobile view adjustments
+            contentArea.style.marginLeft = '0';
+            contentArea.style.paddingLeft = sidebarExpanded ? '0' : '20px';
+        } else {
+            // Desktop view adjustments
+            contentArea.style.marginLeft = sidebarExpanded ? '280px' : '0';
+        }
+    }
+
+    // Initial layout adjustment
+    adjustLayout();
 });
