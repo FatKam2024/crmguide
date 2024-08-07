@@ -22,7 +22,6 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -34,11 +33,11 @@ body {
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
     overflow-y: auto;
+    height: 100vh;
     position: fixed;
-    height: 100%;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 1000;
 }
 
 .sidebar h2 {
@@ -50,12 +49,13 @@ body {
 }
 
 .content {
-    margin-left: 280px;
+    margin-left: 280px; /* Start content after the sidebar */
     flex-grow: 1;
     padding: 40px;
     background-color: var(--content-bg);
     box-shadow: var(--box-shadow);
     overflow-y: auto;
+    transition: margin-left 0.3s ease; /* Smooth transition for expanded sidebar */
 }
 
 h1, h2, h3, h4 {
@@ -324,7 +324,9 @@ body.dark-mode .topic:hover {
         width: 100%;
         padding: 20px;
         height: auto;
-        position: static;
+        position: relative;
+        box-shadow: none;
+        z-index: 0;
     }
 
     .content {
