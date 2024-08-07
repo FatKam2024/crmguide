@@ -8,6 +8,7 @@
     --crm-primary-color: #2980b9;
     --crm-secondary-color: #e74c3c;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --focus-outline: 2px solid #3498db;
 }
 
 body {
@@ -21,6 +22,7 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -32,9 +34,11 @@ body {
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
     overflow-y: auto;
-    height: 100vh;
-    position: sticky;
+    position: fixed;
+    height: 100%;
     top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .sidebar h2 {
@@ -46,6 +50,7 @@ body {
 }
 
 .content {
+    margin-left: 280px;
     flex-grow: 1;
     padding: 40px;
     background-color: var(--content-bg);
@@ -101,9 +106,11 @@ ul {
     background-color: rgba(52, 152, 219, 0.05);
 }
 
-.category:hover, .topic:hover {
+.category:hover, .topic:hover,
+.category:focus, .topic:focus {
     background-color: rgba(52, 152, 219, 0.2);
     transform: translateX(5px);
+    outline: var(--focus-outline);
 }
 
 .chinese {
@@ -293,8 +300,10 @@ body.dark-mode .topic:hover {
     transition: all 0.3s ease;
 }
 
-.diagram-element:hover {
+.diagram-element:hover,
+.diagram-element:focus {
     transform: scale(1.1);
+    outline: var(--focus-outline);
 }
 
 .diagram-info {
@@ -319,6 +328,7 @@ body.dark-mode .topic:hover {
     }
 
     .content {
+        margin-left: 0;
         padding: 20px;
     }
 
