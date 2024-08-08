@@ -81,21 +81,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showCategoryDetails(category) {
-        const contentArea = document.getElementById('contentArea');
-        const categoryInfo = crmTrainingGuide[category];
-        contentArea.innerHTML = `
-            <div class="breadcrumb">
-                <a href="#">Home</a> &gt; <span id="currentTopic">${category}</span>
-            </div>
-            <h2>${category}</h2>
-            <p>${categoryInfo.description.english}</p>
-            <p class="chinese">${categoryInfo.description.chinese}</p>
-            <h3>Topics in this category:</h3>
-            <ul>
-                ${Object.keys(categoryInfo.topics).map(topic => `<li>${topic}</li>`).join('')}
-            </ul>
-        `;
-    }
+		const contentArea = document.getElementById('contentArea');
+		const categoryInfo = crmTrainingGuide[category];
+		contentArea.innerHTML = `
+			<div class="breadcrumb">
+				<a href="#" data-action="home">Home</a> &gt; <span id="currentTopic">${category}</span>
+			</div>
+			<h2>${category}</h2>
+			<p>${categoryInfo.description.english}</p>
+			<p class="chinese">${categoryInfo.description.chinese}</p>
+			<h3>Topics in this category:</h3>
+			<ul>
+				${Object.keys(categoryInfo.topics).map(topic => `<li>${topic}</li>`).join('')}
+			</ul>
+		`;
+		attachBreadcrumbListeners();
+	}
 
     function showTopicDetails(category, topic) {
         const contentArea = document.getElementById('contentArea');
@@ -147,15 +148,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleBreadcrumbClick(event) {
-        event.preventDefault();
-        const action = event.target.dataset.action;
-        if (action === 'home') {
-            showInitialContent();
-        } else if (action === 'category') {
-            const category = event.target.dataset.category;
-            showCategoryDetails(category);
-        }
-    }
+		event.preventDefault();
+		const action = event.target.dataset.action;
+		if (action === 'home' || event.target.textContent.trim() === 'Home') {
+			showInitialContent();
+		} else if (action === 'category') {
+			const category = event.target.dataset.category;
+			showCategoryDetails(category);
+		}
+	}
 	
     function updateProgress() {
         const progress = (completedTopics / totalTopics) * 100;
